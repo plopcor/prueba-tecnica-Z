@@ -1,16 +1,20 @@
 <template>
-    <nav>
-        <RouterLink to="/applications">Ver Aplicaciones</RouterLink>
-        <RouterLink to="/users">Ver Usuarios</RouterLink>
-    </nav>
+
+    <NavHeader />
+
     <main>
         <RouterView />
     </main>
 </template>
 
 <script>
+import NavHeader from "./components/NavHeader.vue";
+
 export default {
-    name: "App"
+    name: "App",
+    components: {
+        NavHeader
+    }
 }
 </script>
 
