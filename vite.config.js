@@ -10,4 +10,8 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    server: { // Exponer al host de docker
+        host: true,
+        port: 8500,
+    }
 });

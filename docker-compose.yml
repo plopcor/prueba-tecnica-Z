@@ -1,0 +1,57 @@
+services:
+  app:
+    build:
+      args:
+          user: "${DOCKER_USER}"
+          uid: "${DOCKER_USER_UID}"    # Solo Linux
+      context: .
+      dockerfile: docker/app/Dockerfile
+    env_file:
+      - .env
+    image: prueba-z
+    container_name: prueba-z-app
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/app
+    ports: # Exponer temporalmente Vite dev server
+      - "8500:8500"
+    volumes:
+      - ./:/var/www/app
+
+  nginx:
+    image: nginx:alpine
+    container_name: prueba-z-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+      - "8443:443"
+    volumes:
+      - ./:/var/www/app
+      - ./docker/nginx:/etc/nginx/conf
+
+  mysql:
+      image: mysql:8.4.6
+      container_name: "${DB_HOST}"
+      restart: unless-stopped
+      tty: true
+      env_file:
+          - .env
+      ports:
+        - "${DB_PORT}:3306"
+#      expose:
+#        - '3306'
+      environment:
+        # MYSQL_HOST: "${DB_HOST}"
+        MYSQL_DATABASE: "${DB_DATABASE}"
+        MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}" # "${DB_ROOT_PASSWORD}"
+        MYSQL_USER: "${DB_USERNAME}"
+        MYSQL_PASSWORD: "${DB_PASSWORD}"
+      volumes:
+          - sql-data:/var/lib/mysql
+volumes:
+    sql-data:
+        driver: local
+
+
+
