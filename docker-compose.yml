@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     tty: true
     working_dir: /var/www/app
-    ports: # Exponer temporalmente Vite dev server
+    ports: # Exponer Vite dev server
       - "8500:8500"
     volumes:
       - ./:/var/www/app
