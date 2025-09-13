@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('hire_date')->nullable()->after('remember_token');
             $table->string('department')->nullable()->after('hire_date');
             $table->string('position')->nullable()->after('department');
+            $table->boolean('is_admin')->default(false)->after('position');
         });
     }
 
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->dropColumn('hire_date');
             $table->dropColumn('department');
             $table->dropColumn('position');
+            $table->dropColumn('is_admin');
         });
     }
 };
