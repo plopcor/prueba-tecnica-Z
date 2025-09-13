@@ -4,6 +4,7 @@ import Login from "../pages/Login.vue";
 import Users from "../pages/Users.vue";
 import Applications from "../pages/Applications.vue";
 import Main from "../pages/Main.vue";
+import { authStore } from "../stores/auth.js";
 
 const routes = [
     { path: '/login', name: 'Login', component: Login },
@@ -25,25 +26,31 @@ const router = createRouter({
 
 // Route guards
 router.beforeEach(async (to, from, next) => {
-    let authenticated = true; // TESTING
-    let isAdmin = false; // TESTING
+    const auth = authStore();
+
+    // Try to load user once (maybe session cookie is set)
+    if (!auth.user && !auth.init) {
+        await auth.getUser();
+    }
+
+    // Redirect from "/login" to "/" if already logged in
+    if (to.name == 'Login' && auth.isAuthenticated) {
+        next({ name: 'Main'});
+        return false;
+    }
+
     if (to.meta.requiresAuth) {
-        if (!authenticated) {
+        if (!auth.isAuthenticated) {
             next({ name: 'Login' })
             return false;
         }
-        if (to.meta.requiresAdmin && !isAdmin) {
+        if (to.meta.requiresAdmin && !auth.isAdmin) {
             // TODO: Return "error: not authorized"
             next({ name: 'Login' })
             return false;
         }
-
-        // Redirect from "/login" to "/" if already logged in
-        if (to.name == 'Login') {
-            next({ name: 'Main'});
-            return false;
-        }
     }
+
     next();
 });
 
