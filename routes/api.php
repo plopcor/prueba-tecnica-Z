@@ -14,3 +14,14 @@ Route::group(['prefix' => 'auth'], function () {
     });
 
 });
+
+Route::group(['prefix' => 'users', 'middleware' => ['auth:sanctum']], function () {
+
+    Route::get('', [\Src\Users\Infrastructure\GetAllUsersController::class, '__invoke']);
+    Route::get('/{id}', [\Src\Users\Infrastructure\GetUserByIdController::class, '__invoke']);
+    Route::post('', [\Src\Users\Infrastructure\CreateUserController::class, '__invoke']);
+    Route::patch('/{id}', [\Src\Users\Infrastructure\UpdateUserController::class, '__invoke']);
+
+});
+
+
