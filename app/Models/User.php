@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Src\Applications\Infrastructure\Eloquent\ApplicationModel;
 
 class User extends Authenticatable
 {
@@ -19,9 +20,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'username',
         'name',
+        'surname',
         'email',
         'password',
+        'hire_date',
+        'department',
+        'position'
     ];
 
     /**
@@ -44,6 +50,12 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'hire_date' => 'date'
         ];
+    }
+
+    public function applications()
+    {
+        return $this->belongsToMany(ApplicationModel::class);
     }
 }
