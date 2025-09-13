@@ -1,5 +1,5 @@
 <template>
-    <header class="p-2 mb-3"> <!-- border-bottom -->
+    <header v-if="authStore.isAuthenticated" class="p-2 mb-3"> <!-- border-bottom -->
         <div class="container col-6">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <!-- nav-pills -->
@@ -23,8 +23,14 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { authStore } from "../stores/auth.js";
+
 export default {
-    name: "NavHeader"
+    name: "NavHeader",
+    computed: {
+        ...mapStores(authStore)
+    }
 }
 </script>
 
