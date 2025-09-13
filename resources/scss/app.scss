@@ -1,6 +1,10 @@
 // Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap";
 
+// Bootstrap icons
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+@import "bootstrap-icons/font/bootstrap-icons";
+
 // Custom styles
 //body {
 //    background-color: red;

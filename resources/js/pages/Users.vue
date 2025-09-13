@@ -4,14 +4,14 @@
         <!-- TODO: ADD MODAL TO EDIT OR CREATE -->
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1 class="mb-0">Usuarios</h1>
+            <h4 class="mb-0">Usuarios</h4>
             <div>
-                <button type="button" class="btn btn-success me-2">Crear</button>
+                <button type="button" class="btn btn-success me-2">Añadir</button>
                 <!--                <button type="button" class="btn btn-secondary">Otro</button>-->
             </div>
         </div>
 
-        <table class="table">
+        <table class="table table-hover shadow">
             <thead>
             <tr>
                 <th scope="col">Usuario</th>
@@ -23,13 +23,14 @@
             </thead>
             <tbody>
             <tr v-for="(user, index) of users">
-                <th scope="row">{{ user.username }}</th>
+                <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.surnames }}</td>
                 <td>
-                    <button type="button" class="btn btn-success btn-sm me-2">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                    <button class="btn p-0 border-0 bg-transparent text-primary mr-2" title="Editar">
+                        <i class="bi bi-pencil-square fs-6"></i>
+                    </button>
                 </td>
             </tr>
             </tbody>
@@ -44,7 +45,8 @@ export default {
     data() {
         return {
             users: [
-                { id: 1, username: 'jdoe', email: 'empresa1@mail.com', name: "John", surnames: "Doe Prueba"}
+                { id: 1, username: 'jdoe', email: 'empresa1@mail.com', name: "John", surnames: "Doe Prueba"},
+                { id: 2, username: 'jaet', email: 'jnet@mail.com', name: "Jannet", surnames: "John Bak"}
             ]
         }
     }
