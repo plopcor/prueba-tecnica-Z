@@ -11,30 +11,32 @@
             </div>
         </div>
 
-        <table class="table table-hover shadow">
-            <thead>
-            <tr>
-                <th scope="col">Usuario</th>
-                <th scope="col">Email</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(user, index) of users">
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.surnames }}</td>
-                <td>
-                    <button class="btn p-0 border-0 bg-transparent text-primary mr-2" title="Editar">
-                        <i class="bi bi-pencil-square fs-6"></i>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover shadow">
+                <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(user, index) of users">
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surnames }}</td>
+                    <td>
+                        <button class="btn p-0 border-0 bg-transparent text-primary mr-2" title="Editar">
+                            <i class="bi bi-pencil-square fs-6"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </template>

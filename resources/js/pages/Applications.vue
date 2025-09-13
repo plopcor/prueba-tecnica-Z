@@ -11,28 +11,30 @@
             </div>
         </div>
 
-        <table class="table table-hover shadow">
-            <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Enlace</th>
-                <th scope="col">Estado</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(app, index) of applications">
-                <td>{{ app.name }}</td>
-                <td><a v-if="app.url" :href="app.url" target="_blank" class="text-decoration-none">{{ app.url }}</a></td>
-                <td><span :style="{ 'background-color': app.isActive ? 'bg-success' : 'bg-alert' }"></span>{{ app.isActive ? 'Activa' : 'Inactiva' }}</td>
-                <td>
-                    <button class="btn p-0 border-0 bg-transparent text-primary mr-2" title="Editar">
-                        <i class="bi bi-pencil-square fs-6"></i>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover shadow">
+                <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Enlace</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(app, index) of applications">
+                    <td>{{ app.name }}</td>
+                    <td><a v-if="app.url" :href="app.url" target="_blank" class="text-decoration-none">{{ app.url }}</a></td>
+                    <td><span :style="{ 'background-color': app.isActive ? 'bg-success' : 'bg-alert' }"></span>{{ app.isActive ? 'Activa' : 'Inactiva' }}</td>
+                    <td>
+                        <button class="btn p-0 border-0 bg-transparent text-primary mr-2" title="Editar">
+                            <i class="bi bi-pencil-square fs-6"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </template>

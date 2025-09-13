@@ -8,7 +8,7 @@
             </ul>
             <div>
                 <div class="mt-2">
-                    <span class="mx-2">{{ authStore.user.username }}</span>
+                    <span class="mx-2 d-none d-sm-inline">{{ authStore.user.username }}</span>
                     <button @click="logout" class="btn p-0 border-0 bg-transparent">
                         <i class="bi bi-box-arrow-right fs-5"></i>
                     </button>
