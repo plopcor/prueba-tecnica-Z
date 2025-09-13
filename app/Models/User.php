@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function applications()
     {
-        return $this->belongsToMany(ApplicationModel::class);
+        return $this->belongsToMany(ApplicationModel::class, 'user_application', 'user_id', 'application_id');
     }
 }

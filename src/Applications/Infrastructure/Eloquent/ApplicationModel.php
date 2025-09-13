@@ -23,6 +23,6 @@ class ApplicationModel extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_application', 'application_id', 'user_id');
     }
 }
