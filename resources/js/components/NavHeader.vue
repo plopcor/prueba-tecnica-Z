@@ -3,8 +3,8 @@
         <nav class="d-flex shadow rounded justify-content-between py-2 px-2 my-4 ">
             <ul class="nav nav-pills">
                 <li class="nav-item"><RouterLink to="/" class="nav-link" active-class="active">Panel</RouterLink></li>
-                <li class="nav-item"><RouterLink to="/applications" class="nav-link" active-class="active">Aplicaciones</RouterLink></li>
-                <li class="nav-item"><RouterLink to="/users" class="nav-link" active-class="active">Usuarios</RouterLink></li>
+                <li v-if="authStore.isAdmin" class="nav-item"><RouterLink to="/applications" class="nav-link" active-class="active">Aplicaciones</RouterLink></li>
+                <li v-if="authStore.isAdmin" class="nav-item"><RouterLink to="/users" class="nav-link" active-class="active">Usuarios</RouterLink></li>
             </ul>
             <div>
                 <div class="mt-2">
