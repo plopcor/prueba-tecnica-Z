@@ -1,8 +1,7 @@
 
 # Administrador de usuarios y aplicaciones
 
-E
-Este proyecto permite gestionar usuarios, aplicaciones y su acceso por los usuarios
+Esta aplicacion permite gestionar usuarios, aplicaciones y su acceso por los usuarios
 
 Permite tener administradores y usuarios normales.
 
@@ -65,6 +64,12 @@ Aplicado practicas comunes para manejar componentes, estados, redirecciones, etc
 - Inyección de dependencias para repositorios
 - Uso de DTOs para desacoplar la lógica de negocio (modelos Laravel)
 - Configuracion de 
+
+## Docker
+
+- Tres contenedores, uno por servicio
+- Un volumen para persistir base de datos
+- Contenedor de PHP no se ejecuta hasta que MySQL esta arrancado (mediante `condition` y healthcheck) para entonces lanzar las migraciones
 
 ## Proyecto
 
