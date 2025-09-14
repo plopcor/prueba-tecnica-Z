@@ -26,5 +26,18 @@ export default defineConfig({
         hmr: {
             host: 'localhost'
         },
-    }
+    },
+    // Bootstrap 5 docs -- Optional: Silence Sass deprecation warnings. See note below.
+    css: {
+        preprocessorOptions: {
+            scss: {
+                silenceDeprecations: [
+                    'import',
+                    'mixed-decls',
+                    'color-functions',
+                    'global-builtin',
+                ],
+            },
+        },
+    },
 });

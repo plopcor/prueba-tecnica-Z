@@ -1,5 +1,5 @@
 <template>
-    <div class="container col-12 col-md-8">
+    <div class="container col-12 col-md-8 shadow pt-2">
 
         <!-- TODO: ADD MODAL TO EDIT OR CREATE -->
 
@@ -12,7 +12,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-hover shadow">
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">Nombre</th>
