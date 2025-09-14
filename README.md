@@ -84,6 +84,23 @@ DB_PASSWORD=
 ```
 - Generar contenedores: `docker compose up --build`
 
+### Iniciar sesion
+
+> Definidos en `database/seeders/DatabaseSeeder.php`
+
+**Administrador**
+```
+julia_perez
+admin1234
+```
+
+**Usuario**
+```
+ana_fernandez
+user1234
+```
+
+
 ### Estructura base de datos
 
 `Users` id, username, email, name, surname, ..., is_admin
