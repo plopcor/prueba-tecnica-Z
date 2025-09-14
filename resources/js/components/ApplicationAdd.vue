@@ -22,7 +22,7 @@
         </div>
 
         <div class="d-grid mt-3">
-            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <button @click="create" type="submit" class="btn btn-primary">Aceptar</button>
         </div>
 
     </OffCanvas>

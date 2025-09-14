@@ -29,7 +29,7 @@
                 <tr v-for="(app, index) of applicationsStore.applications">
                     <td>{{ app.name }}</td>
                     <td><a v-if="app.url" :href="app.url" target="_blank" class="text-decoration-none">{{ app.url }}</a></td>
-                    <td><span :style="{ 'background-color': app.isActive ? 'bg-success' : 'bg-alert' }"></span>{{ app.isActive ? 'Activa' : 'Inactiva' }}</td>
+                    <td><span :style="{ 'background-color': app.isActive ? 'bg-success' : 'bg-alert' }"></span>{{ app.is_active ? 'Activa' : 'Inactiva' }}</td>
                     <td>
                         <button @click="edit(app)" class="btn p-0 border-0 bg-transparent text-primary mr-2" title="Editar">
                             <i class="bi bi-pencil-square fs-6"></i>

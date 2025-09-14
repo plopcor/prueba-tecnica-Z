@@ -30,7 +30,7 @@ export const applicationsStore = defineStore('applications', {
 
         async update(id, app) {
             try {
-                const response = await api.put(`/apps/${id}`, app);
+                const response = await api.patch(`/apps/${id}`, app);
                 const index = this.applications.findIndex(app => app.id === id);
                 if (index !== -1) {
                     this.applications[index] = response.data;
