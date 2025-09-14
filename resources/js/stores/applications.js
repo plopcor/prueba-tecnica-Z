@@ -15,6 +15,7 @@ export const applicationsStore = defineStore('applications', {
                 this.applications = response.data;
             } catch (error) {
                 this.error = error.response?.data?.message || error.message;
+                throw this.error
             }
         },
 
@@ -24,7 +25,7 @@ export const applicationsStore = defineStore('applications', {
                 this.applications.push(response.data);
             } catch (error) {
                 this.error = error.response?.data?.message || error.message;
-                // throw error;
+                throw this.error;
             }
         },
 
@@ -37,7 +38,7 @@ export const applicationsStore = defineStore('applications', {
                 }
             } catch (error) {
                 this.error = error.response?.data?.message || error.message;
-                // throw error;
+                throw this.error;
             }
         },
     },

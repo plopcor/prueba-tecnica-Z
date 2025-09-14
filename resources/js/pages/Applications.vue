@@ -2,6 +2,7 @@
     <div class="container col-12 col-md-8 shadow pt-2">
 
         <ApplicationAdd
+            v-if="showAddModal"
             :show="showAddModal"
             @close="showAddModal = false"
             :application="selectedApp"

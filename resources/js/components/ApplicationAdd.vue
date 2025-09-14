@@ -6,24 +6,28 @@
         :title="(isEdit ? 'Editar' : 'Añadir') + ' aplicacion'"
     >
 
-        <div class="form-floating mb-2">
-            <input v-model="app.name" type="text" class="form-control" id="name" placeholder="Nombre">
-            <label for="name">Nombre</label>
-        </div>
+        <form @submit.prevent="create">
 
-        <div class="form-floating mb-2">
-            <input v-model="app.url" type="text" class="form-control" id="url" placeholder="URL">
-            <label for="url">URL</label>
-        </div>
+            <div class="form-floating mb-2">
+                <input v-model="app.name" type="text" class="form-control" id="name" placeholder="Nombre">
+                <label for="name">Nombre</label>
+            </div>
 
-        <div class="form-check form-switch">
-            <input v-model="app.is_active" class="form-check-input" type="checkbox" role="switch" id="active">
-            <label class="form-check-label" for="active">Activa</label>
-        </div>
+            <div class="form-floating mb-2">
+                <input v-model="app.url" type="url" class="form-control" id="url" placeholder="URL">
+                <label for="url">URL</label>
+            </div>
 
-        <div class="d-grid mt-3">
-            <button @click="create" type="submit" class="btn btn-primary">Aceptar</button>
-        </div>
+            <div class="form-check form-switch">
+                <input v-model="app.is_active" class="form-check-input" type="checkbox" role="switch" id="active">
+                <label class="form-check-label" for="active">Activa</label>
+            </div>
+
+            <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+
+        </form>
 
     </OffCanvas>
 
@@ -57,14 +61,17 @@ export default {
     },
     methods: {
         async create() {
-            if (this.app.id) {
-                await this.applicationsStore.update(this.app.id, this.app);
-            } else {
-                // Create
-                await this.applicationsStore.add(this.app);
+            try {
+                if (this.app.id) {
+                    await this.applicationsStore.update(this.app.id, this.app);
+                } else {
+                    await this.applicationsStore.add(this.app);
+                }
+                this.$emit('created');
+                this.close();
+            } catch (error) {
+                alert(error);
             }
-            this.$emit('created');
-            this.close();
         },
         close() {
             this.$emit('close');
