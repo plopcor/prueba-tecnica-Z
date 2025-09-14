@@ -12,7 +12,13 @@ class LogoutController
             return response()->json(['message' => 'Unauthenticated'], 401);
         }
 
-        $user->currentAccessToken()->delete();
+        // Web session only
+        auth()->guard('web')->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        // API token only
+        // $user->currentAccessToken()->delete();
 
         return response()->noContent(); // HTTP 204
     }
