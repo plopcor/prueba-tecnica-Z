@@ -24,4 +24,12 @@ Route::group(['prefix' => 'users', 'middleware' => ['auth:sanctum']], function (
 
 });
 
+Route::group(['prefix' => 'apps', 'middleware' => ['auth:sanctum']], function () {
+
+    Route::get('', [\Src\Applications\Infrastructure\GetAllApplicationsController::class, '__invoke']);
+    Route::get('/{id}', [\Src\Applications\Infrastructure\GetApplicationByIdController::class, '__invoke']);
+    Route::post('', [\Src\Applications\Infrastructure\CreateApplicationController::class, '__invoke']);
+    Route::patch('/{id}', [\Src\Applications\Infrastructure\UpdateApplicationController::class, '__invoke']);
+
+});
 
