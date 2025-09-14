@@ -4,7 +4,7 @@ namespace Src\Users\Domain;
 
 class User
 {
-    private int $id;
+    private ?int $id;
     private string $username;
     private string $name;
     private ?string $surname;
@@ -42,7 +42,7 @@ class User
         $this->applicationIds = $applicationIds;
     }
 
-    public function createWithPassword(
+    public static function createWithPassword(
         ?int $id,
         string $username,
         string $name,
@@ -55,8 +55,9 @@ class User
         bool $isAdmin,
         ?array $applicationIds
     ) {
-        $user = new User($id, $username, $name, $surname, $email, $password, $hireDate, $department, $position, $isAdmin, $applicationIds);
+        $user = new User($id, $username, $name, $surname, $email, $hireDate, $department, $position, $isAdmin, $applicationIds);
         $user->password = $password;
+        return $user;
     }
 
     public function getId(): int

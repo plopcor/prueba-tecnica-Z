@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use Src\Shared\Domain\Exceptions\UserIsNotAdminException;
 use Src\Users\Application\GetAllUsers;
 use Src\Users\Domain\DTO\UserListResponse;
+use Src\Users\Domain\DTO\UserResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class GetAllUsersController
 {
     public function __invoke(Request $request): Response
     {
-        // IMPROVEMENT: Mapear $request->user a una entity
 
         try {
 
@@ -24,7 +24,8 @@ class GetAllUsersController
         }
 
 
-        return response()->json(UserListResponse::fromArray($users));
+        return response()->json(UserResponse::fromArray($users));
+//        return response()->json(UserListResponse::fromArray($users));
     }
 
 }

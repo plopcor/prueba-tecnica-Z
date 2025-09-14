@@ -27,7 +27,8 @@ class User extends Authenticatable
         'password',
         'hire_date',
         'department',
-        'position'
+        'position',
+        'is_admin'
     ];
 
     /**
@@ -50,7 +51,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'hire_date' => 'date'
+            'hire_date' => 'date',
+            'is_admin' => 'boolean'
         ];
     }
 
