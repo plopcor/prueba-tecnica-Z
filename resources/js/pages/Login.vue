@@ -1,19 +1,19 @@
 <template>
-    <strong>Usuario y contraseña</strong>
+    <div class="container col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3 d-flex align-items-center justify-content-center vh-100">
 
-    <h4>Inicia sesión en tu cuenta</h4>
-
-    <div class="form-floating mb-3">
-        <input v-model="username" type="text" class="form-control" id="username" placeholder="email@example.com">
-        <label for="username">Usuario</label>
+        <div class="card border-0 shadow p-4 w-100">
+            <h4 class="mb-4 text-center">Iniciar sesión</h4>
+            <div class="form-floating mb-3">
+                <input v-model="username" type="text" class="form-control" id="username" placeholder="email@example.com">
+                <label for="username">Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input v-model="password" type="password" class="form-control" id="password" placeholder="Contraseña">
+                <label for="password">Contraseña</label>
+            </div>
+            <button type="button" @click="login" class="btn btn-primary">Acceder</button>
+        </div>
     </div>
-    <div class="form-floating">
-        <input v-model="password" type="password" class="form-control" id="password" placeholder="Contraseña">
-        <label for="password">Contraseña</label>
-    </div>
-
-    <button type="button" class="btn" @click="login">Acceder</button>
-
 </template>
 
 <script>

@@ -38,7 +38,7 @@ router.beforeEach(async (to, from, next) => {
     }
 
     // Load data
-    if (auth.isAuthenticated) {
+    if (auth.isAuthenticated && auth.isAdmin) {
         if (!appStore.init)
             await appStore.getAll();
         if (!userStore.init)
