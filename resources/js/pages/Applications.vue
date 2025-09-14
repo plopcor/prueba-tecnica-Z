@@ -56,7 +56,6 @@ export default {
         return {
             showAddModal: false,
             selectedApp: null,
-            // applications: this.applicationsStore.applications
         }
     },
     computed: {
