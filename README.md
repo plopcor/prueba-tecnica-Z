@@ -84,9 +84,21 @@ DB_PASSWORD=
 ```
 - Generar contenedores: `docker compose up --build`
 
+### Estructura base de datos
+
+`Users` id, username, email, name, surname, ..., is_admin
+- Informacion de los usuarios, permite tambien iniciar sesion
+
+`Applications` id, name, url, is_active
+- Informacion de las aplicaciones
+
+`User_application` user_id, application_id
+- Permite relacionar usuarios con las aplicaciones que pueden utilizar
+
+
 ### Carpetas importantes
 
-`/imagenes`: Contiene imagenes de la UI
+`/imagenes`: Contiene imagenes y video de la UI
 
 `/src`: Contiene todos los ficheros para DDD y hexagonal del backend.
 
