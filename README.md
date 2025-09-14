@@ -86,6 +86,8 @@ DB_PASSWORD=
 
 ### Carpetas importantes
 
+`/imagenes`: Contiene imagenes de la UI
+
 `/src`: Contiene todos los ficheros para DDD y hexagonal del backend.
 
 > Esta separado primero por contextos/entidades (Users, Applications, Shared) y dentro contiene cada capa (Application, Domain, Infrastructure)
