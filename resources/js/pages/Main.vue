@@ -7,10 +7,11 @@
             </p>
             <template v-else>
                 <p>Tienes acceso a la siguientes aplicaciones:</p>
-                <ul>
-                    <li>Clients CRM v2</li>
+                <ul class="list-unstyled">
+                    <li v-for="(app) of ownApps">
+                        <a :href="app.url" class="text-decoration-none" target="_blank">{{ app.name }}</a>
+                    </li>
                 </ul>
-                <strong>TODO: Mostrar un mosaico con las aplicaciones?</strong>
             </template>
         </div>
     </div>
@@ -24,7 +25,13 @@ import { mapStores } from "pinia";
 export default {
     name: "Main",
     computed: {
-        ...mapStores(authStore)
+        ...mapStores(authStore),
+        ownApps() {
+            return [
+                { name: "CRM Clientes v2", url: "https://google.com" },
+                { name: "Documanager", url: "https://google.com" },
+            ];
+        }
     }
 }
 </script>
