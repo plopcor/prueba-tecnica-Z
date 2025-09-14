@@ -2,11 +2,13 @@
     <div class="container col-12 col-md-8 shadow pt-2">
 
         <UserAdd
+            v-if="showAddModal"
             :show="showAddModal"
             @close="showAddModal = false"
         ></UserAdd>
 
         <UserEdit
+            v-if="showEditModal"
             :show="showEditModal"
             @close="showEditModal = false"
             :user="selectedUser"
@@ -32,7 +34,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(user, index) of users">
+                <tr v-for="(user, index) of usersStore.users">
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.name }}</td>
@@ -41,9 +43,9 @@
                         <button @click="edit(user)" class="btn p-0 border-0 bg-transparent text-primary me-3" title="Editar">
                             <i class="bi bi-pencil-square fs-6"></i>
                         </button>
-                        <button @click="editApps(user)" class="btn p-0 border-0 bg-transparent text-primary" title="Editar">
-                            <i class="bi bi-unlock fs-6"></i>
-                        </button>
+<!--                        <button @click="editApps(user)" class="btn p-0 border-0 bg-transparent text-primary" title="Editar">-->
+<!--                            <i class="bi bi-unlock fs-6"></i>-->
+<!--                        </button>-->
                     </td>
                 </tr>
                 </tbody>
@@ -54,23 +56,24 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
 import UserAdd from "../components/UserAdd.vue";
 import UserEdit from "../components/UserEdit.vue";
+import { usersStore } from "../stores/users.js";
 
 export default {
     name: "Users",
-    components: {UserAdd, UserEdit },
+    components: { UserAdd, UserEdit },
     data() {
         return {
             showAddModal: false,
             showEditModal: false,
             showAppsModal: false,
-            selectedUser: null,
-            users: [
-                { id: 1, username: 'jdoe', email: 'empresa1@mail.com', name: "John", surname: "Doe Prueba", apps: [1,2,3]},
-                { id: 2, username: 'jaet', email: 'jnet@mail.com', name: "Jannet", surname: "John Bak", apps: [4,5]}
-            ]
+            selectedUser: null
         }
+    },
+    computed: {
+        ...mapStores(usersStore)
     },
     methods: {
         create() {
@@ -79,11 +82,7 @@ export default {
         edit(user) {
             this.selectedUser = user;
             this.showEditModal = true;
-        },
-        editApps(user) {
-            this.selectedUser = user;
-            this.showAppsModal = true;
-        },
+        }
     }
 }
 </script>

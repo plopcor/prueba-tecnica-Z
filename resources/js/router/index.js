@@ -6,6 +6,7 @@ import Applications from "../pages/Applications.vue";
 import Main from "../pages/Main.vue";
 import { authStore } from "../stores/auth.js";
 import {applicationsStore} from "../stores/applications.js";
+import {usersStore} from "../stores/users.js";
 
 const routes = [
     { path: '/login', name: 'Login', component: Login },
@@ -29,15 +30,19 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
     const auth = authStore();
     const appStore = applicationsStore();
+    const userStore = usersStore();
 
     // Try to load user once (maybe session cookie is set)
     if (!auth.isAuthenticated && !auth.init) {
         await auth.getUser();
     }
 
-    // Load applications
-    if (auth.isAuthenticated && !appStore.init) {
-        await appStore.getAll();
+    // Load data
+    if (auth.isAuthenticated) {
+        if (!appStore.init)
+            await appStore.getAll();
+        if (!userStore.init)
+            await userStore.getAll();
     }
 
     // Redirect from "/login" to "/" if already logged in
