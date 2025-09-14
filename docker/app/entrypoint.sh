@@ -19,8 +19,8 @@ if grep -E 'APP_KEY=$' .env; then       # If APP_KEY not set
 fi
 
 # Laravel - Migrate (force to create DB automatically)
-php artisan migrate --force --seed
-# TODO =======> ADD --seed
+# Seed (--seed) already done in migration
+php artisan migrate --force
 
 ## Vue - Install packages
 if [ ! -d node_modules/ ]; then
